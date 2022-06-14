@@ -1,7 +1,4 @@
 {
-  "boot": {
-    "type": "nspawn-extract"
-  },
   "compose-request": {
     "distro": "centos-8",
     "arch": "x86_64",
@@ -30,8 +27,6 @@
           "version": "*"
         }
       ],
-      "modules": [],
-      "groups": [],
       "customizations": {
         "user": [
           {
@@ -8502,5 +8497,6 @@
         "check_gpg": true
       }
     ]
-  }
+  },
+  "no-image-info": true
 }

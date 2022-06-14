@@ -25,7 +25,6 @@
           "version": "*"
         }
       ],
-      "modules": [],
       "groups": [
         {
           "name": "core"
@@ -11888,5 +11887,6 @@
         "checksum": "sha256:ce33e39116f51f85467b9a24fcbfbfd5292e599f9d3feddc54dda18d3dd0f76e"
       }
     ]
-  }
+  },
+  "no-image-info": true
 }

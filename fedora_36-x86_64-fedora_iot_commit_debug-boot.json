@@ -21,7 +21,8 @@
     "blueprint": {
       "customizations": {
         "kernel": {
-          "name": "kernel-debug"
+          "name": "kernel-debug",
+          "append": ""
         }
       }
     }
@@ -14180,5 +14181,6 @@
         "check_gpg": true
       }
     ]
-  }
+  },
+  "no-image-info": true
 }

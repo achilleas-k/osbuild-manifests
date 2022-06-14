@@ -27,7 +27,6 @@
           "version": "*"
         }
       ],
-      "modules": [],
       "groups": [
         {
           "name": "core"
@@ -14644,5 +14643,6 @@
         "check_gpg": true
       }
     ]
-  }
+  },
+  "no-image-info": true
 }

@@ -1,7 +1,4 @@
 {
-  "boot": {
-    "type": "openstack"
-  },
   "compose-request": {
     "distro": "rhel-90-beta",
     "arch": "aarch64",
@@ -22,9 +19,6 @@
     "blueprint": {
       "name": "openstack-boot-test",
       "description": "Image for boot test",
-      "packages": [],
-      "modules": [],
-      "groups": [],
       "customizations": {
         "user": [
           {
@@ -9220,5 +9214,6 @@
         "checksum": "sha256:2d994e82edf552bf568bc3803bdbfeb8b0d2709f2305529b174ea26954a7a422"
       }
     ]
-  }
+  },
+  "no-image-info": true
 }

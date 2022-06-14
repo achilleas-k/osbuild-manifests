@@ -1,7 +1,4 @@
 {
-  "boot": {
-    "type": "nspawn-extract"
-  },
   "compose-request": {
     "distro": "rhel-90-beta",
     "arch": "aarch64",
@@ -28,8 +25,6 @@
           "version": "*"
         }
       ],
-      "modules": [],
-      "groups": [],
       "customizations": {
         "user": [
           {
@@ -5080,5 +5075,6 @@
         "checksum": "sha256:1f57efd68c7f5e51ece2cb51c0501da0903a069de49ea7b484de2016f141d65d"
       }
     ]
-  }
+  },
+  "no-image-info": true
 }

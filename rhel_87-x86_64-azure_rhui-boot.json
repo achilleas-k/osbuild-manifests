@@ -2328,6 +2328,9 @@
                     "id": "sha256:6bf8c03ef185b79579f42ce3404d01b0444772cc476081807002124e0331661e"
                   },
                   {
+                    "id": "sha256:714de349188ecb98716b6db76f84d4d900cef9684adf9ca3bfbb8f579e574eb4"
+                  },
+                  {
                     "id": "sha256:a842bbdfe4e3f24ef55acd0ed6930639ccaa5980a2774235bc4c6c2a95ab421c"
                   },
                   {
@@ -2748,6 +2751,8 @@
             "options": {
               "enabled_services": [
                 "firewalld",
+                "nm-cloud-setup.service",
+                "nm-cloud-setup.timer",
                 "sshd",
                 "systemd-resolved",
                 "waagent"
@@ -2821,6 +2826,42 @@
           {
             "type": "org.osbuild.modprobe",
             "options": {
+              "filename": "blacklist-amdgpu.conf",
+              "commands": [
+                {
+                  "command": "blacklist",
+                  "modulename": "amdgpu"
+                }
+              ]
+            }
+          },
+          {
+            "type": "org.osbuild.modprobe",
+            "options": {
+              "filename": "blacklist-intel-cstate.conf",
+              "commands": [
+                {
+                  "command": "blacklist",
+                  "modulename": "intel_cstate"
+                }
+              ]
+            }
+          },
+          {
+            "type": "org.osbuild.modprobe",
+            "options": {
+              "filename": "blacklist-floppy.conf",
+              "commands": [
+                {
+                  "command": "blacklist",
+                  "modulename": "floppy"
+                }
+              ]
+            }
+          },
+          {
+            "type": "org.osbuild.modprobe",
+            "options": {
               "filename": "blacklist-nouveau.conf",
               "commands": [
                 {
@@ -2837,13 +2878,25 @@
           {
             "type": "org.osbuild.modprobe",
             "options": {
-              "filename": "blacklist-floppy.conf",
+              "filename": "blacklist-skylake-edac.conf",
               "commands": [
                 {
                   "command": "blacklist",
-                  "modulename": "floppy"
+                  "modulename": "skx_edac"
                 }
               ]
+            }
+          },
+          {
+            "type": "org.osbuild.systemd.unit",
+            "options": {
+              "unit": "nm-cloud-setup.service",
+              "dropin": "10-rh-enable-for-azure.conf",
+              "config": {
+                "Service": {
+                  "Environment": "NM_CLOUD_SETUP_AZURE=yes"
+                }
+              }
             }
           },
           {
@@ -3436,6 +3489,29 @@
               "format": {
                 "type": "vpc"
               }
+            }
+          }
+        ]
+      },
+      {
+        "name": "archive",
+        "build": "name:build",
+        "stages": [
+          {
+            "type": "org.osbuild.xz",
+            "inputs": {
+              "file": {
+                "type": "org.osbuild.files",
+                "origin": "org.osbuild.pipeline",
+                "references": {
+                  "name:vpc": {
+                    "file": "disk.vhd"
+                  }
+                }
+              }
+            },
+            "options": {
+              "filename": "disk.vhd.xz"
             }
           }
         ]
@@ -4277,6 +4353,9 @@
           },
           "sha256:714557927e1ed71adfb1acdff8e92a8700d30957a3407daecc59d5ad465170a7": {
             "url": "https://rpmrepo.osbuild.org/v2/mirror/rhvpn/el8/el8-x86_64-baseos-n8.7-20220415/Packages/dnf-4.7.0-8.el8.noarch.rpm"
+          },
+          "sha256:714de349188ecb98716b6db76f84d4d900cef9684adf9ca3bfbb8f579e574eb4": {
+            "url": "https://rpmrepo.osbuild.org/v2/mirror/rhvpn/el8/el8-x86_64-appstream-n8.7-20220415/Packages/NetworkManager-cloud-setup-1.39.0-1.el8.x86_64.rpm"
           },
           "sha256:714f1fc52a9579e3a81544ba372bbabfc46bb8bc06f86552150e1937eea07f2b": {
             "url": "https://rpmrepo.osbuild.org/v2/mirror/rhvpn/el8/el8-x86_64-baseos-n8.7-20220415/Packages/kmod-kvdo-6.2.6.14-84.el8.x86_64.rpm"
@@ -12132,6 +12211,15 @@
         "checksum": "sha256:6bf8c03ef185b79579f42ce3404d01b0444772cc476081807002124e0331661e"
       },
       {
+        "name": "NetworkManager-cloud-setup",
+        "epoch": 1,
+        "version": "1.39.0",
+        "release": "1.el8",
+        "arch": "x86_64",
+        "remote_location": "https://rpmrepo.osbuild.org/v2/mirror/rhvpn/el8/el8-x86_64-appstream-n8.7-20220415/Packages/NetworkManager-cloud-setup-1.39.0-1.el8.x86_64.rpm",
+        "checksum": "sha256:714de349188ecb98716b6db76f84d4d900cef9684adf9ca3bfbb8f579e574eb4"
+      },
+      {
         "name": "PackageKit",
         "epoch": 0,
         "version": "1.1.12",
@@ -13248,5 +13336,6 @@
         "checksum": "sha256:10e429e047cea577ade1d52422a39af6349b4427b6aba8865dc4eba169c142ce"
       }
     ]
-  }
+  },
+  "no-image-info": true
 }

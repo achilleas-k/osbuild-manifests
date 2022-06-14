@@ -1,7 +1,4 @@
 {
-  "boot": {
-    "type": "nspawn-extract"
-  },
   "compose-request": {
     "distro": "centos-9",
     "arch": "s390x",
@@ -30,8 +27,6 @@
           "version": "*"
         }
       ],
-      "modules": [],
-      "groups": [],
       "customizations": {
         "user": [
           {
@@ -9588,5 +9583,6 @@
         "check_gpg": true
       }
     ]
-  }
+  },
+  "no-image-info": true
 }

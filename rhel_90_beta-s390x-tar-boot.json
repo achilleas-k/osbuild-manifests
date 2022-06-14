@@ -1,7 +1,4 @@
 {
-  "boot": {
-    "type": "nspawn-extract"
-  },
   "compose-request": {
     "distro": "rhel-90-beta",
     "arch": "s390x",
@@ -28,8 +25,6 @@
           "version": "*"
         }
       ],
-      "modules": [],
-      "groups": [],
       "customizations": {
         "user": [
           {
@@ -6802,5 +6797,6 @@
         "checksum": "sha256:fd3c4c9085c93ed5a312d155105be1c9c2e40f8b1e06f69bbe8ae34755e015df"
       }
     ]
-  }
+  },
+  "no-image-info": true
 }

@@ -8979,5 +8979,6 @@
         "checksum": "sha256:fb3d2020dca3f3674da8d25c5acdac1c9eee7acbc933acc720b39e92266265a7"
       }
     ]
-  }
+  },
+  "no-image-info": true
 }

@@ -2220,7 +2220,7 @@
             "type": "org.osbuild.truncate",
             "options": {
               "filename": "disk.raw",
-              "size": "21474836480"
+              "size": "3225419776"
             }
           },
           {
@@ -2243,7 +2243,7 @@
                   "uuid": "68B2905B-DF3E-4FB3-80FA-49D1E773AA33"
                 },
                 {
-                  "size": 41936863,
+                  "size": 6293471,
                   "start": 6144,
                   "type": "0FC63DAF-8483-4772-8E79-3D69D8477DE4",
                   "uuid": "6264D520-3FB9-423F-8AB8-7A0A8E3D3562"
@@ -2289,7 +2289,7 @@
                 "options": {
                   "filename": "disk.raw",
                   "start": 6144,
-                  "size": 41936863,
+                  "size": 6293471,
                   "lock": true
                 }
               }
@@ -2328,7 +2328,7 @@
                 "options": {
                   "filename": "disk.raw",
                   "start": 6144,
-                  "size": 41936863
+                  "size": 6293471
                 }
               }
             },
@@ -9290,5 +9290,6 @@
         "check_gpg": true
       }
     ]
-  }
+  },
+  "no-image-info": true
 }

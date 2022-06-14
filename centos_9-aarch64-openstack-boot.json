@@ -1,7 +1,4 @@
 {
-  "boot": {
-    "type": "openstack"
-  },
   "compose-request": {
     "distro": "centos-9",
     "arch": "aarch64",
@@ -24,9 +21,6 @@
     "blueprint": {
       "name": "openstack-boot-test",
       "description": "Image for boot test",
-      "packages": [],
-      "modules": [],
-      "groups": [],
       "customizations": {
         "user": [
           {
@@ -12787,5 +12781,6 @@
         "check_gpg": true
       }
     ]
-  }
+  },
+  "no-image-info": true
 }

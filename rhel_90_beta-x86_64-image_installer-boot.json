@@ -18,7 +18,6 @@
     "filename": "installer.iso",
     "blueprint": {}
   },
-  "no-image-info": true,
   "manifest": {
     "version": "2",
     "pipelines": [
@@ -22375,5 +22374,6 @@
         "checksum": "sha256:20db80c9563d59f06635b1d0294e6c382114c5f327dc0b114647722b1b806c08"
       }
     ]
-  }
+  },
+  "no-image-info": true
 }

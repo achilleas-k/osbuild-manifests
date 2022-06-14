@@ -19,9 +19,6 @@
     "blueprint": {
       "name": "qcow2-boot-test",
       "description": "Image for boot test",
-      "packages": [],
-      "modules": [],
-      "groups": [],
       "customizations": {
         "user": [
           {
@@ -11327,5 +11324,6 @@
         "checksum": "sha256:d2bec8969a26156fd64ceca267b210e58b6181f4f9b303d905c1225eb7887cee"
       }
     ]
-  }
+  },
+  "no-image-info": true
 }
