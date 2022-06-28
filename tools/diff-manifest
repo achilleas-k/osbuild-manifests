@@ -1,0 +1,141 @@
+#!/usr/bin/env python3
+import argparse
+import json
+
+
+def read_manifest(fname: str):
+    with open(fname, mode="r", encoding="utf-8") as jsonfile:
+        return json.load(jsonfile)
+
+
+def difflist(alist, blist):
+    acopy = list(alist)
+    for bv in blist:
+        try:
+            acopy.remove(bv)
+        except ValueError:
+            pass
+
+    bcopy = list(blist)
+    for av in alist:
+        try:
+            bcopy.remove(av)
+        except ValueError:
+            pass
+
+    diff = {}
+    if acopy:
+        diff["a"] = acopy
+    if bcopy:
+        diff["b"] = bcopy
+    return diff
+
+
+def calcdiff(adata, bdata):
+    diff = {}
+
+    if adata == bdata:
+        return diff
+
+    if isinstance(adata, dict) and isinstance(bdata, dict):
+        only_in_a = []
+        for ak, av in adata.items():
+            bv = bdata.get(ak)
+            if bv is None:
+                only_in_a.append({ak: av})
+            kdiff = calcdiff(av, bv)
+            if kdiff:
+                diff[ak] = kdiff
+
+        if only_in_a:
+            diff["only-in-a"] = only_in_a
+
+        # find keys that are only in b
+        only_in_b = []
+        for bk in bdata.keys():
+            if adata.get(bk) is None:
+                only_in_b.append({bk: bv})
+
+        if only_in_b:
+            diff["only-in-b"] = only_in_b
+    elif isinstance(adata, list) and isinstance(bdata, list):
+        diff.update(difflist(adata, bdata))
+    else:
+        diff["a"] = adata
+        diff["b"] = bdata
+
+    return diff
+
+
+def diff_source_items(aitems, bitems):
+    if aitems != bitems:
+        return {"source-items": "differ"}
+
+    return {}
+
+
+def diff_curl_sources(adata, bdata):
+    if adata == bdata:
+        return {}
+
+    if adata is None:
+        return {"b-only": bdata}
+
+    if bdata is None:
+        return {"a-only": adata}
+
+    aitems = adata["items"]
+    bitems = bdata["items"]
+
+    for aid, aitem in aitems.items():
+        if bitem := bitems[aid]:
+            if aitem != bitem:
+                # same package, different options (url, gpg check)
+                diffitems = diff.get("items", {})
+                diffitems[aid] = {"a": aitem, "b": bitem}
+                diff["items"] = diffitems
+        else:
+            # package in a doesn't exist in b
+            pass
+
+
+def diff_sources(adata, bdata):
+    diff = {}
+
+    diff["org.osbuild.curl"] = diff_curl_sources(
+        adata.get("org.osbuild.curl"),
+        bdata.get("org.osbuild.curl"),
+    )
+
+
+def diff_manifests(adata, bdata):
+    diff = {}
+    diff.update(diff_sources(adata["sources"], bdata["sources"]))
+    return diff
+
+
+def describe(diff):
+    # TODO: simplify and make it readable
+    print(json.dumps(diff, indent=2))
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("a")
+    parser.add_argument("b")
+    args = parser.parse_args()
+
+    a = args.a
+    b = args.b
+
+    adata = read_manifest(a)
+    bdata = read_manifest(b)
+
+    manifest_diff = diff_manifests(adata["manifest"], bdata["manifest"])
+
+    diff_data = calcdiff(adata, bdata)
+    describe(diff_data)
+
+
+if __name__ == "__main__":
+    main()
