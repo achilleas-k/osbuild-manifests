@@ -2647,7 +2647,9 @@
               "kernel_opts": "console=tty0 console=ttyS0,115200n8 no_timer_check net.ifnames=0 crashkernel=auto debug",
               "legacy": "powerpc-ieee1275",
               "saved_entry": "ffffffffffffffffffffffffffffffff-4.18.0-299.1.el8.ppc64le",
-              "config": {}
+              "config": {
+                "default": "saved"
+              }
             }
           },
           {
@@ -2682,7 +2684,7 @@
                   "type": "41"
                 },
                 {
-                  "size": 19912604,
+                  "size": 19912704,
                   "start": 1058816,
                   "type": "8e"
                 },
@@ -2726,7 +2728,7 @@
                 "options": {
                   "filename": "disk.img",
                   "start": 1058816,
-                  "size": 19912604,
+                  "size": 19912704,
                   "lock": true
                 }
               }
@@ -2750,7 +2752,7 @@
                 "options": {
                   "filename": "disk.img",
                   "start": 1058816,
-                  "size": 19912604,
+                  "size": 19912704,
                   "lock": true
                 }
               }
@@ -2774,7 +2776,7 @@
                 "options": {
                   "filename": "disk.img",
                   "start": 1058816,
-                  "size": 19912604,
+                  "size": 19912704,
                   "lock": true
                 }
               }
@@ -2798,7 +2800,7 @@
                 "options": {
                   "filename": "disk.img",
                   "start": 1058816,
-                  "size": 19912604,
+                  "size": 19912704,
                   "lock": true
                 }
               }
@@ -2861,7 +2863,7 @@
                 "options": {
                   "filename": "disk.img",
                   "start": 1058816,
-                  "size": 19912604
+                  "size": 19912704
                 }
               },
               "usr": {
@@ -2917,7 +2919,7 @@
                 "options": {
                   "filename": "disk.img",
                   "start": 1058816,
-                  "size": 19912604,
+                  "size": 19912704,
                   "lock": true
                 }
               }
