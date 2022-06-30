@@ -1,0 +1,5 @@
+[allowlist]
+  description = "Test keys and passwords that should not be reported as leaks"
+  regexes = [
+      '''\$6\$BhyxFBgrEFh0VrPJ\$MllG8auiU26x2pmzL4\.1maHzPHrA\.4gTdCvlATFp8HJU9UPee4zCS9BVl2HOzKaUYD\/zEm8r\/OF05F2icWB0K''',  # qcow2 test manifest user password
+  ]
