@@ -8068,7 +8068,7 @@
         "check_gpg": true
       }
     ],
-    "packages": [
+    "os": [
       {
         "name": "acl",
         "epoch": 0,
