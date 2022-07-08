@@ -29,7 +29,7 @@
         "baseurl": "https://rpmrepo.osbuild.org/v2/mirror/rhvpn/el7/el7-x86_64-rhui-azure-20220530"
       }
     ],
-    "filename": "disk.vhd",
+    "filename": "disk.vhd.xz",
     "blueprint": {}
   },
   "manifest": {
